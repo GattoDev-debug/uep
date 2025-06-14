@@ -92,20 +92,12 @@ UEP splits your file into pieces called "chunks" and inserts random â€œgarbageâ€
 
 ## Download
 
-Pre-built executables for Windows, macOS, and Linux are available as workflow artifacts and GitHub Releases.
-
-### Download from Artifacts
-
-1. Go to the [Actions tab](https://github.com/GattoDev-debug/uep/actions) of this repository.
-2. Click on the latest workflow run on the `main` branch.
-3. Scroll down to the "Artifacts" section and download the build for your platform.
-
-> **Note:** Artifacts are available for a limited time after each update.
+Pre-built executables for Windows is available as Github Releases
 
 ### Download from Releases
 
 1. Go to the [Releases page](https://github.com/GattoDev-debug/uep/releases).
-2. Download the latest release for your platform (Windows, macOS, or Linux).
+2. Download the latest release.
 
 ---
 
