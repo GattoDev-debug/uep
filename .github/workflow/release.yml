@@ -1,0 +1,71 @@
+name: Build and Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Generate random tag
+        id: tag
+        run: echo "TAG=release-$(shuf -i 10000-99999 -n 1)" >> $GITHUB_ENV
+
+      - name: Get current date
+        id: date
+        run: echo "DATE=$(date +'%Y-%m-%d_%H-%M-%S')" >> $GITHUB_ENV
+
+      - name: Create and push tag
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git tag $TAG
+          git push origin $TAG
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ env.TAG }}
+          name: Release ${{ env.DATE }}
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+
+  build:
+    needs: release
+    strategy:
+      matrix:
+        platform: [windows, macos, linux]
+    runs-on: ${{ matrix.platform }}-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build executable with PyInstaller
+        uses: JackMcKew/pyinstaller-action@v0.5.0
+        with:
+          path: main.py
+
+      - name: Rename artifact
+        run: |
+          if [ "${{ matrix.platform }}" = "windows" ]; then
+            mv dist/main.exe uep-${{ matrix.platform }}.exe
+          else
+            mv dist/main uep-${{ matrix.platform }}
+          fi
+
+      - name: Upload Release Asset
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ needs.release.outputs.TAG }}
+          files: |
+            uep-${{ matrix.platform }}*
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
