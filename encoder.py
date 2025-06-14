@@ -1,5 +1,6 @@
 import random
 
+# Insert code_chunks at specified positions in the content, tracking what was inserted and where
 def encode_bytes(content: bytes, code_chunks: list, positions: list):
     encoded = content
     offset = 0
@@ -10,6 +11,7 @@ def encode_bytes(content: bytes, code_chunks: list, positions: list):
         offset += len(chunk)
     return encoded, inserted
 
+# Perform multiple passes of encoding, each time with a different seed and random data
 def multi_pass_encode(content: bytes, base_seed: int, passes: int = 5):
     encoded = content
     all_metadata = []
