@@ -35,7 +35,7 @@ jobs:
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
-          name: uep-${{ matrix.platform }}
+          name: uep-${{ matrix.platform }}-${{ github.run_id }}
           path: |
             uep-${{ matrix.platform }}*
 
