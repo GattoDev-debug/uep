@@ -1,5 +1,6 @@
 # UEP - Unethical Encryption Protocol
-> [!TIP] 
+
+> [!TIP]  
 > UEP (Unethical Encryption Protocol) is a playful, multi-pass file obfuscation tool that works with any file format. It repeatedly inserts random data ("garbage") into your files using a variable seed, then removes it in reverse order to restore the original file. UEP is not intended for serious cryptographic use, but can be used for simple file hiding, tamper-evident storage, or educational purposes.
 
 ---
@@ -10,7 +11,7 @@
 - Multi-pass encoding/decoding with configurable repeat count (`-repeat`)
 - Randomized "garbage" insertion based on a seed (`-seed`)
 - All metadata required for decoding is embedded in the encoded file
-- Modular codebase: `main.py`, `encoder.py`, `decoder.py` 
+- Modular codebase: `main.py`, `encoder.py`, `decoder.py`
 - Simple command-line interface with positional input/output arguments
 - Requires no extra dependencies
 
@@ -82,10 +83,29 @@ UEP splits your file into pieces called "chunks" and inserts random “garbage�
 > **Do not use this for real security or encryption.**  
 > It’s not cryptographically secure and is meant for fun and learning only.
 
-> [!IMPORTANT] 
-> This random tool is for educational purposes only.
+> [!IMPORTANT]  
+> This tool is for educational purposes only.  
 > **Do NOT use this tool for ransomware, malware, or any malicious activity.**  
-> Any misuse is strictly prohibited and I'll take no responsibility for unethical use.
+> Any misuse is strictly prohibited and the author takes no responsibility for unethical use.
+
+---
+
+## Download
+
+Pre-built executables for Windows, macOS, and Linux are available as workflow artifacts and GitHub Releases.
+
+### Download from Artifacts
+
+1. Go to the [Actions tab](https://github.com/GattoDev-debug/uep/actions) of this repository.
+2. Click on the latest workflow run on the `main` branch.
+3. Scroll down to the "Artifacts" section and download the build for your platform.
+
+> **Note:** Artifacts are available for a limited time after each update.
+
+### Download from Releases
+
+1. Go to the [Releases page](https://github.com/GattoDev-debug/uep/releases).
+2. Download the latest release for your platform (Windows, macOS, or Linux).
 
 ---
 
