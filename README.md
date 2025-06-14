@@ -10,7 +10,7 @@
 - Multi-pass encoding/decoding with configurable repeat count (`-repeat`)
 - Randomized "garbage" insertion based on a seed (`-seed`)
 - All metadata required for decoding is embedded in the encoded file
-- Modular codebase: `main.py`, `encoder.py`, `decoder.py`
+- Modular codebase: `main.py`, `encoder.py`, `decoder.py` 
 - Simple command-line interface with positional input/output arguments
 - Requires no extra dependencies
 
