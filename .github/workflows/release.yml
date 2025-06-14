@@ -30,6 +30,10 @@ jobs:
         run: |
           pyinstaller --onefile main.py
 
+      - name: Generate random tag
+        id: tag
+        run: echo "tag=release-$(shuf -i 10000-99999 -n 1)" >> $GITHUB_OUTPUT
+
       - name: Get current date
         id: date
         run: echo "date=$(date +'%Y-%m-%d_%H-%M-%S')" >> $GITHUB_OUTPUT
@@ -37,7 +41,7 @@ jobs:
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: release-${{ github.sha }}
+          tag_name: ${{ steps.tag.outputs.tag }}
           name: Release ${{ steps.date.outputs.date }}
           draft: false
           prerelease: false
@@ -47,7 +51,7 @@ jobs:
       - name: Upload Release Asset
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: release-${{ github.sha }}
+          tag_name: ${{ steps.tag.outputs.tag }}
           files: |
             dist/main*
             dist/main.exe
