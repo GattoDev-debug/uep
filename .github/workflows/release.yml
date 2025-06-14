@@ -17,9 +17,12 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build executable with PyInstaller
-        uses: JackMcKew/pyinstaller-action@v0.5.0
+        uses: sayyid5416/pyinstaller@v1
         with:
-          path: main.py
+          python_ver: '3.13'
+          spec: 'main.py'
+          upload_exe_with_name: 'build'
+          options: --onefile, 
 
       - name: Rename artifact
         run: |
