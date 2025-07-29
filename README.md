@@ -1,4 +1,4 @@
-# UEP - Unethical Encryption Protocol
+# UEP - Unethical Encryption Protocol [<img src="http://www.wtfpl.net/wp-content/uploads/2012/12/wtfpl-badge-4.png">](https://www.wtfpl.net/)
 
 > [!TIP]  
 > UEP (Unethical Encryption Protocol) is a playful, multi-pass file obfuscation tool that works with any file format. It repeatedly inserts random data ("garbage") into your files using a variable seed, then removes it in reverse order to restore the original file. UEP is not intended for serious cryptographic use, but can be used for simple file hiding, tamper-evident storage, or educational purposes.
